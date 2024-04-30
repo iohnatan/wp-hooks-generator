@@ -1,0 +1,3521 @@
+{
+    "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json",
+    "hooks": [
+        {
+            "name": "added_{$this->object_type}_meta",
+            "file": "plugins\\woocommerce\\includes\\abstracts\\abstract-wc-data.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "after_woocommerce_add_payment_method",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-my-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "after_woocommerce_pay",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "before_woocommerce_add_payment_method",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-my-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "before_woocommerce_pay",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "before_woocommerce_pay_form",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-checkout.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "deleted_{$this->object_type}_meta",
+            "file": "plugins\\woocommerce\\includes\\abstracts\\abstract-wc-data.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "import_end",
+            "file": "plugins\\woocommerce\\includes\\admin\\importers\\class-wc-tax-rate-importer.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "lostpassword_post",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-my-account.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "media_upload_file",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-upload-downloadable-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "password_reset",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-my-account.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "rest_api_init",
+            "file": "plugins\\woocommerce\\tests\\legacy\\framework\\class-wc-rest-unit-test-case.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "rest_delete_product_review",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-product-reviews-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "rest_delete_product_review",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version2\\class-wc-rest-shipping-zone-methods-v2-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "retrieve_password",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-my-account.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "updated_{$this->object_type}_meta",
+            "file": "plugins\\woocommerce\\includes\\abstracts\\abstract-wc-data.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "valid-paypal-standard-ipn-request",
+            "file": "plugins\\woocommerce\\includes\\gateways\\paypal\\includes\\class-wc-gateway-paypal-ipn-handler.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "wc_admin_daily",
+            "file": "plugins\\woocommerce-beta-tester\\api\\tools\\run-wc-admin-daily.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "wc_marketplace_suggestions_products_empty_state",
+            "file": "plugins\\woocommerce\\includes\\admin\\list-tables\\class-wc-admin-list-table-products.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "wc_reports_tabs",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-page-reports.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_account_content",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\my-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_account_dashboard",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\dashboard.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_account_downloads_column_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\order\\order-downloads.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_account_navigation",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\my-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_account_payment_methods_column_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\payment-methods.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_account_{$key}_endpoint",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-my-account.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_add_payment_method_form_bottom",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-add-payment-method.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_admin_after_product_gallery_item",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\class-wc-meta-box-product-images.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_admin_attribute_types",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-attributes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_admin_attribute_types",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-attributes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_admin_key_fields",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\views\\html-keys-edit.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_item_headers",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_item_values",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-fee.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_admin_order_item_values",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-item.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_admin_order_item_values",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-refund.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_admin_order_item_values",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-shipping.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_admin_order_items_after_fees",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_items_after_line_items",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_items_after_refunds",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_items_after_shipping",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_totals_after_discount",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_totals_after_refunded",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_totals_after_shipping",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_totals_after_tax",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_order_totals_after_total",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_status_content_{$current_tab}",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-page-status.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_admin_user_actions_end",
+            "file": "plugins\\woocommerce\\includes\\admin\\reports\\class-wc-report-customer-list.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_user_actions_start",
+            "file": "plugins\\woocommerce\\includes\\admin\\reports\\class-wc-report-customer-list.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_admin_version_information_end",
+            "file": "plugins\\woocommerce-beta-tester\\includes\\class-wc-beta-tester-admin-menus.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_admin_version_information_start",
+            "file": "plugins\\woocommerce-beta-tester\\includes\\class-wc-beta-tester-admin-menus.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_account_downloads",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\downloads.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_account_navigation",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\navigation.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_account_orders",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_account_payment_methods",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\payment-methods.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_add_attribute_fields",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-attributes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\external.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\simple.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variation-add-to-cart-button.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\external.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\simple.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_quantity",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_quantity",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\simple.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_add_to_cart_quantity",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variation-add-to-cart-button.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_available_downloads",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\downloads.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_available_downloads",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\my-downloads.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_cart",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_cart_contents",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_cart_item_name",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_after_cart_table",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_cart_totals",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-totals.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_checkout_billing_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-billing.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_checkout_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_checkout_registration_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-billing.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_checkout_shipping_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-shipping.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_customer_login_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_edit_account_address_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-address.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_edit_account_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_edit_address_form_{$load_address}",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-address.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_edit_attribute_fields",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-attributes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_lost_password_confirmation_message",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\lost-password-confirmation.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_lost_password_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-lost-password.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_main_content",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_main_content",
+            "file": "plugins\\woocommerce\\templates\\single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_mini_cart",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_my_account",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\dashboard.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_order_details",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_order_fee_item_name",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-fee.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_after_order_itemmeta",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-item.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_after_order_itemmeta",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-shipping.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_after_order_notes",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-shipping.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_order_refund_item_name",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-refund.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_product_attribute_settings",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-attribute-inner.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_after_quantity_input_field",
+            "file": "plugins\\woocommerce\\templates\\global\\quantity-input.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_reset_password_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-reset-password.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_settings_{$current_tab}",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-settings.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_shipping_calculator",
+            "file": "plugins\\woocommerce\\templates\\cart\\shipping-calculator.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_shipping_rate",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-shipping.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_after_shop_loop",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_shop_loop_item",
+            "file": "plugins\\woocommerce\\templates\\content-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_shop_loop_item_title",
+            "file": "plugins\\woocommerce\\templates\\content-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_single_product",
+            "file": "plugins\\woocommerce\\templates\\content-single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_single_product_summary",
+            "file": "plugins\\woocommerce\\templates\\content-single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_single_variation",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_subcategory",
+            "file": "plugins\\woocommerce\\templates\\content-product-cat.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_subcategory_title",
+            "file": "plugins\\woocommerce\\templates\\content-product-cat.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_variations_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_variations_table",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_{$this->object_type}_object_save",
+            "file": "plugins\\woocommerce\\includes\\abstracts\\abstract-wc-data.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_after_{$this->object_type}_object_save",
+            "file": "plugins\\woocommerce\\includes\\class-wc-shipping-zone.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_customer",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_customer",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_create_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_create_order_note",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_create_order_note",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_create_order_refund",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_create_order_refund",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_create_product",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_product",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_product_attribute_term",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_product_category",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_product_shipping_class",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_product_tag",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_tax",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-taxes.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_tax_class",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-taxes.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_webhook",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-webhooks.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_create_webhook",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-webhooks.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_customer",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_customer",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_order_note",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_delete_order_note",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_delete_order_refund",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_delete_order_refund",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_delete_product",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_product",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_product_attribute_term",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_product_category",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_product_shipping_class",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_product_tag",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_webhook",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-webhooks.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_delete_webhook",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-webhooks.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_customer",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_customer",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_edit_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_edit_order_note",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_edit_order_note",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_edit_order_refund",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_edit_order_refund",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_edit_product",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_product",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_product_attribute_term",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_product_category",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_product_shipping_class",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_product_tag",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_tax_rate",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-taxes.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_webhook",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-webhooks.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_edit_webhook",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-webhooks.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_process_product_meta_{$product->get_type()}",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_process_product_meta_{$product->get_type()}",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_api_save_product_variation",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_save_product_variation",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_update_customer_data",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_update_customer_data",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-customers.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_api_uploaded_image_from_url",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_archive_description",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_attribute_added",
+            "file": "plugins\\woocommerce\\includes\\wc-attribute-functions.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_attribute_deleted",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-products.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_attribute_deleted",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-products.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_attribute_deleted",
+            "file": "plugins\\woocommerce\\includes\\wc-attribute-functions.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_attribute_updated",
+            "file": "plugins\\woocommerce\\includes\\wc-attribute-functions.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_auth_page_footer",
+            "file": "plugins\\woocommerce\\templates\\auth\\form-grant-access.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_auth_page_footer",
+            "file": "plugins\\woocommerce\\templates\\auth\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_auth_page_header",
+            "file": "plugins\\woocommerce\\templates\\auth\\form-grant-access.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_auth_page_header",
+            "file": "plugins\\woocommerce\\templates\\auth\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_available_download_end",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\my-downloads.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_available_download_start",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\my-downloads.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_available_downloads",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\downloads.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_account_downloads",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\downloads.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_account_navigation",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\navigation.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_account_orders",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_account_orders_pagination",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\orders.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_account_payment_methods",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\payment-methods.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_add_attribute_fields",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-attributes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\external.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\simple.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_button",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variation-add-to-cart-button.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\external.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\simple.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_quantity",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_quantity",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\simple.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_add_to_cart_quantity",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variation-add-to-cart-button.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_attribute_delete",
+            "file": "plugins\\woocommerce\\includes\\wc-attribute-functions.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_before_available_downloads",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\downloads.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_available_downloads",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\my-downloads.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_cart",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_cart_collaterals",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_cart_contents",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_cart_table",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_cart_totals",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-totals.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_checkout_billing_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-billing.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_checkout_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_checkout_form_cart_notices",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_checkout_registration_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-billing.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_checkout_shipping_form",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-shipping.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_customer_login_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_delete_order_item",
+            "file": "plugins\\woocommerce\\includes\\wc-order-item-functions.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_edit_account_address_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-address.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_edit_account_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_edit_address_form_{$load_address}",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-address.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_edit_attribute_fields",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-attributes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_lost_password_confirmation_message",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\lost-password-confirmation.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_lost_password_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-lost-password.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_main_content",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_main_content",
+            "file": "plugins\\woocommerce\\templates\\single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_mini_cart",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_mini_cart_contents",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_my_account",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\dashboard.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_order_item_{$item->get_type()}_html",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_before_order_itemmeta",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-item.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_before_order_itemmeta",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-shipping.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_before_order_notes",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-shipping.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_quantity_input_field",
+            "file": "plugins\\woocommerce\\templates\\global\\quantity-input.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_reset_password_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-reset-password.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_settings_{$current_tab}",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-settings.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_shipping_calculator",
+            "file": "plugins\\woocommerce\\templates\\cart\\shipping-calculator.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_shop_loop",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_shop_loop_item",
+            "file": "plugins\\woocommerce\\templates\\content-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_shop_loop_item_title",
+            "file": "plugins\\woocommerce\\templates\\content-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_single_product",
+            "file": "plugins\\woocommerce\\templates\\content-single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_single_product_summary",
+            "file": "plugins\\woocommerce\\templates\\content-single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_single_variation",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_subcategory",
+            "file": "plugins\\woocommerce\\templates\\content-product-cat.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_subcategory_title",
+            "file": "plugins\\woocommerce\\templates\\content-product-cat.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_thankyou",
+            "file": "plugins\\woocommerce\\templates\\checkout\\thankyou.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_before_variations_form",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_{$this->object_type}_object_save",
+            "file": "plugins\\woocommerce\\includes\\abstracts\\abstract-wc-data.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_before_{$this->object_type}_object_save",
+            "file": "plugins\\woocommerce\\includes\\class-wc-shipping-zone.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_calculated_shipping",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_actions",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_collaterals",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_contents",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_coupon",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_has_errors",
+            "file": "plugins\\woocommerce\\templates\\checkout\\cart-errors.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_is_empty",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-empty.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_totals_after_order_total",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-totals.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_totals_after_shipping",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-totals.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_totals_before_order_total",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-totals.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_cart_totals_before_shipping",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-totals.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_check_cart_items",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_check_cart_items",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_after_customer_details",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_after_order_review",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_after_terms_and_conditions",
+            "file": "plugins\\woocommerce\\templates\\checkout\\terms.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_before_customer_details",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_before_order_review",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_before_order_review_heading",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_before_terms_and_conditions",
+            "file": "plugins\\woocommerce\\templates\\checkout\\terms.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_billing",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_order_review",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_shipping",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-checkout.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_checkout_terms_and_conditions",
+            "file": "plugins\\woocommerce\\templates\\checkout\\terms.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_coupon_data_panels",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\class-wc-meta-box-coupon-data.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_coupon_options",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\class-wc-meta-box-coupon-data.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_coupon_options_save",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\class-wc-meta-box-coupon-data.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_coupon_options_usage_limit",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\class-wc-meta-box-coupon-data.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_coupon_options_usage_restriction",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\class-wc-meta-box-coupon-data.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_credit_card_form_end",
+            "file": "plugins\\woocommerce\\includes\\gateways\\class-wc-payment-gateway-cc.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_credit_card_form_start",
+            "file": "plugins\\woocommerce\\includes\\gateways\\class-wc-payment-gateway-cc.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_customer_save_address",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-profile.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_delete_order_item",
+            "file": "plugins\\woocommerce\\includes\\wc-order-item-functions.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_download_file_force",
+            "file": "plugins\\woocommerce\\includes\\class-wc-download-handler.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_download_file_{$file_download_method}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-download-handler.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_download_product",
+            "file": "plugins\\woocommerce\\includes\\class-wc-download-handler.php",
+            "type": "action",
+            "args": 6
+        },
+        {
+            "name": "woocommerce_echeck_form_end",
+            "file": "plugins\\woocommerce\\includes\\gateways\\class-wc-payment-gateway-echeck.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_echeck_form_start",
+            "file": "plugins\\woocommerce\\includes\\gateways\\class-wc-payment-gateway-echeck.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_edit_account_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_edit_account_form_end",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_edit_account_form_start",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_edit_account_form_tag",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-edit-account.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_email_after_order_table",
+            "file": "plugins\\woocommerce\\templates\\emails\\email-order-details.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_after_order_table",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\email-order-details.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_before_order_table",
+            "file": "plugins\\woocommerce\\templates\\emails\\email-order-details.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_before_order_table",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\email-order-details.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-failed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-new-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-completed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-invoice.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-note.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-processing-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-refunded-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-failed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-new-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-completed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-invoice.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-note.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-processing-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-refunded-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_downloads_column_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\emails\\email-downloads.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_downloads_column_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\email-downloads.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\includes\\react-admin\\emails\\html-admin-report-export-download.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\includes\\react-admin\\emails\\html-merchant-notification.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-failed-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-new-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-completed-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-invoice.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-new-account-blocks.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-new-account.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-note.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-processing-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-refunded-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_footer",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-reset-password.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\includes\\react-admin\\emails\\html-admin-report-export-download.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\includes\\react-admin\\emails\\html-merchant-notification.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-failed-order.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-new-order.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-completed-order.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-invoice.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-new-account-blocks.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-new-account.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-note.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-processing-order.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-refunded-order.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_header",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-reset-password.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-failed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-new-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-completed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-invoice.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-note.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-processing-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-refunded-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-failed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-new-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-completed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-invoice.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-note.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-processing-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_details",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-refunded-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-failed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\admin-new-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-completed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-invoice.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-note.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-processing-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\customer-refunded-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-cancelled-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-failed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\admin-new-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-completed-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-invoice.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-note.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-on-hold-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-processing-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_order_meta",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\customer-refunded-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_setting_column_{$key}",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\class-wc-settings-emails.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_flat_rate_shipping_add_rate",
+            "file": "plugins\\woocommerce\\includes\\shipping\\legacy-flat-rate\\class-wc-shipping-legacy-flat-rate.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_grouped_product_list_after",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_grouped_product_list_after_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_grouped_product_list_before",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_grouped_product_list_before_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\grouped.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_integrations_init",
+            "file": "plugins\\woocommerce\\includes\\class-wc-integrations.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_login_form",
+            "file": "plugins\\woocommerce\\templates\\global\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_login_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_login_form_end",
+            "file": "plugins\\woocommerce\\templates\\global\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_login_form_end",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_login_form_start",
+            "file": "plugins\\woocommerce\\templates\\global\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_login_form_start",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_lostpassword_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-lost-password.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_mini_cart_contents",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_my_account_my_orders_column_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\my-orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_my_account_my_orders_column_{$column_id}",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_new_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_new_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_new_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_new_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_new_order_item",
+            "file": "plugins\\woocommerce\\includes\\wc-order-item-functions.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_no_products_found",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_order_details_after_customer_details",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details-customer.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_order_details_after_order_table",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_order_details_after_order_table_items",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_order_details_before_order_table",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_order_details_before_order_table_items",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_order_edit_product",
+            "file": "plugins\\woocommerce\\includes\\legacy\\abstract-wc-legacy-order.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_add_action_buttons",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_order_item_add_line_buttons",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_order_item_meta_end",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-pay.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_end",
+            "file": "plugins\\woocommerce\\templates\\emails\\email-order-items.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_end",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\email-order-items.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_end",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details-item.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_start",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-pay.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_start",
+            "file": "plugins\\woocommerce\\templates\\emails\\email-order-items.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_start",
+            "file": "plugins\\woocommerce\\templates\\emails\\plain\\email-order-items.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_start",
+            "file": "plugins\\woocommerce\\templates\\order\\order-details-item.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_{$item->get_type()}_html",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-order-items.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_order_tracking_form",
+            "file": "plugins\\woocommerce\\templates\\order\\form-tracking.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_order_tracking_form_end",
+            "file": "plugins\\woocommerce\\templates\\order\\form-tracking.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_order_tracking_form_start",
+            "file": "plugins\\woocommerce\\templates\\order\\form-tracking.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_order_update_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\abstract-wc-legacy-order.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_order_update_fee",
+            "file": "plugins\\woocommerce\\includes\\legacy\\abstract-wc-legacy-order.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_order_update_shipping",
+            "file": "plugins\\woocommerce\\includes\\legacy\\abstract-wc-legacy-order.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_order_update_tax",
+            "file": "plugins\\woocommerce\\includes\\legacy\\abstract-wc-legacy-order.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_pay_order_after_submit",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-pay.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_pay_order_before_payment",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-pay.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_pay_order_before_submit",
+            "file": "plugins\\woocommerce\\templates\\checkout\\form-pay.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_payment_token_set_default",
+            "file": "plugins\\woocommerce\\includes\\class-wc-payment-tokens.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_privacy_before_remove_order_personal_data",
+            "file": "plugins\\woocommerce\\includes\\class-wc-privacy-erasers.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_privacy_remove_order_personal_data",
+            "file": "plugins\\woocommerce\\includes\\class-wc-privacy-erasers.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_proceed_to_checkout",
+            "file": "plugins\\woocommerce\\templates\\cart\\cart-totals.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_additional_information",
+            "file": "plugins\\woocommerce\\templates\\single-product\\tabs\\additional-information.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_product_after_tabs",
+            "file": "plugins\\woocommerce\\templates\\single-product\\tabs\\tabs.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_data_panels",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-panel.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_duplicate",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-duplicate-product.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_product_duplicate_before_save",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-duplicate-product.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_product_duplicate_before_save",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-duplicate-product.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_product_export_row",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-page-product-export.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_meta_end",
+            "file": "plugins\\woocommerce\\templates\\single-product\\meta.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_meta_start",
+            "file": "plugins\\woocommerce\\templates\\single-product\\meta.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_option_terms",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-attribute-inner.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_product_options_advanced",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-advanced.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_attributes",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-attributes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_downloads",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-general.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_external",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-general.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_general_product_data",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-general.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_inventory_product_data",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-inventory.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_pricing",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-general.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_related",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-linked-products.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_reviews",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-advanced.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_sku",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-inventory.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_sold_individually",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-inventory.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_stock",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-inventory.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_stock_fields",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-inventory.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_stock_status",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-inventory.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_options_tax",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-general.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_quick_edit_end",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-quick-edit-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_quick_edit_start",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-quick-edit-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_thumbnails",
+            "file": "plugins\\woocommerce\\templates\\single-product\\product-image.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_product_write_panel_tabs",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-panel.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_receipt_{$order->get_payment_method()}",
+            "file": "plugins\\woocommerce\\templates\\checkout\\order-receipt.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_register_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_register_form_end",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_register_form_start",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_register_form_tag",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-login.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_reset_password_notification",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-my-account.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_resetpassword_form",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\form-reset-password.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_rest_api_uploaded_image_from_url",
+            "file": "plugins\\woocommerce\\includes\\wc-rest-functions.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_rest_delete_customer",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-customers-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_order_note",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-order-notes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-product-attributes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_review",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-product-reviews-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_tax",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-tax-classes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_tax",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-taxes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_webhook_object",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-webhooks-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_{$this->post_type}",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-posts-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_delete_{$this->post_type}_object",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-crud-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_customer",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-customers-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_customer",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-customers-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_order_note",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-order-notes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_order_note",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-order-notes-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-product-attributes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-product-attributes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_product_attribute",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-product-attributes-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_product_review",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-product-reviews-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_product_review",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-product-reviews-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_product_review",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-product-reviews-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_product_review",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-product-reviews-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_system_status_tool",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version2\\class-wc-rest-system-status-tools-v2-controller.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_rest_insert_tax",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-taxes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_tax",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-taxes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_tax_class",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-tax-classes-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_webhook_object",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-webhooks-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_webhook_object",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-webhooks-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_{$this->post_type}",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version1\\class-wc-rest-order-refunds-v1-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_{$this->post_type}",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-posts-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_{$this->post_type}",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-posts-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_{$this->post_type}_object",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-crud-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_insert_{$this->post_type}_object",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version3\\class-wc-rest-crud-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_rest_save_product_variation",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\class-wc-rest-legacy-products-controller.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_review_after_comment_text",
+            "file": "plugins\\woocommerce\\templates\\single-product\\review.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_review_before",
+            "file": "plugins\\woocommerce\\templates\\single-product\\review.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_review_before_comment_meta",
+            "file": "plugins\\woocommerce\\templates\\single-product\\review.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_review_before_comment_text",
+            "file": "plugins\\woocommerce\\templates\\single-product\\review.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_review_comment_text",
+            "file": "plugins\\woocommerce\\templates\\single-product\\review.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_review_meta",
+            "file": "plugins\\woocommerce\\templates\\single-product\\review.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_review_order_after_cart_contents",
+            "file": "plugins\\woocommerce\\templates\\checkout\\review-order.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_after_order_total",
+            "file": "plugins\\woocommerce\\templates\\checkout\\review-order.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_after_payment",
+            "file": "plugins\\woocommerce\\templates\\checkout\\payment.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_after_shipping",
+            "file": "plugins\\woocommerce\\templates\\checkout\\review-order.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_after_submit",
+            "file": "plugins\\woocommerce\\templates\\checkout\\payment.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_before_cart_contents",
+            "file": "plugins\\woocommerce\\templates\\checkout\\review-order.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_before_order_total",
+            "file": "plugins\\woocommerce\\templates\\checkout\\review-order.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_before_payment",
+            "file": "plugins\\woocommerce\\templates\\checkout\\payment.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_before_shipping",
+            "file": "plugins\\woocommerce\\templates\\checkout\\review-order.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_review_order_before_submit",
+            "file": "plugins\\woocommerce\\templates\\checkout\\payment.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_sections_{$current_tab}",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-settings.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_settings_tabs",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-settings.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_settings_tabs_{$current_tab}",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-settings.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_settings_{$current_tab}",
+            "file": "plugins\\woocommerce\\includes\\admin\\views\\html-admin-settings.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_share",
+            "file": "plugins\\woocommerce\\templates\\single-product\\share.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_shipping_classes_column_{$class}",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\views\\html-admin-page-shipping-classes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_shipping_classes_column_{$class}",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\views\\html-admin-page-shipping-classes.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_shipping_zone_after_methods_table",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\views\\html-admin-page-shipping-zone-methods.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_shipping_zone_before_methods_table",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\views\\html-admin-page-shipping-zone-methods.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_shipping_zone_method_added",
+            "file": "plugins\\woocommerce\\includes\\class-wc-shipping-zone.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_shipping_zone_method_deleted",
+            "file": "plugins\\woocommerce\\includes\\class-wc-shipping-zone.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "woocommerce_shipping_zone_method_status_toggled",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version2\\class-wc-rest-shipping-zone-methods-v2-controller.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "woocommerce_shop_loop",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_shop_loop_item_title",
+            "file": "plugins\\woocommerce\\templates\\content-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_shop_loop_subcategory_title",
+            "file": "plugins\\woocommerce\\templates\\content-product-cat.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_sidebar",
+            "file": "plugins\\woocommerce\\templates\\archive-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_sidebar",
+            "file": "plugins\\woocommerce\\templates\\single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_single_product_summary",
+            "file": "plugins\\woocommerce\\templates\\content-single-product.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_single_variation",
+            "file": "plugins\\woocommerce\\templates\\single-product\\add-to-cart\\variable.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_thankyou",
+            "file": "plugins\\woocommerce\\templates\\checkout\\thankyou.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_thankyou_{$order->get_payment_method()}",
+            "file": "plugins\\woocommerce\\templates\\checkout\\thankyou.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_track_order",
+            "file": "plugins\\woocommerce\\includes\\shortcodes\\class-wc-shortcode-order-tracking.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_update_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_update_coupon",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-coupons.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_update_option",
+            "file": "plugins\\woocommerce\\includes\\gateways\\bacs\\class-wc-gateway-bacs.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_update_options_{$this->id}_",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\class-wc-settings-page.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_update_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v2\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_update_order",
+            "file": "plugins\\woocommerce\\includes\\legacy\\api\\v3\\class-wc-api-orders.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_update_order_item",
+            "file": "plugins\\woocommerce\\includes\\wc-order-item-functions.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_variable_product_before_variations",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-variations.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_variable_product_bulk_edit_actions",
+            "file": "plugins\\woocommerce\\includes\\admin\\meta-boxes\\views\\html-product-data-variations.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_variable_product_sync_data",
+            "file": "plugins\\woocommerce\\includes\\class-wc-product-variable.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_view_order",
+            "file": "plugins\\woocommerce\\templates\\myaccount\\view-order.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_view_order",
+            "file": "plugins\\woocommerce\\templates\\order\\tracking.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_webhook_options",
+            "file": "plugins\\woocommerce\\includes\\admin\\settings\\views\\html-webhooks-edit.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_webhook_options_save",
+            "file": "plugins\\woocommerce\\includes\\admin\\class-wc-admin-webhooks.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_widget_layered_nav_filters_end",
+            "file": "plugins\\woocommerce\\includes\\widgets\\class-wc-widget-layered-nav-filters.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_widget_layered_nav_filters_start",
+            "file": "plugins\\woocommerce\\includes\\widgets\\class-wc-widget-layered-nav-filters.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "woocommerce_widget_price_filter_end",
+            "file": "plugins\\woocommerce\\templates\\content-widget-price-filter.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_widget_price_filter_start",
+            "file": "plugins\\woocommerce\\templates\\content-widget-price-filter.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_widget_product_item_end",
+            "file": "plugins\\woocommerce\\templates\\content-widget-product.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_widget_product_item_start",
+            "file": "plugins\\woocommerce\\templates\\content-widget-product.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_widget_product_review_item_end",
+            "file": "plugins\\woocommerce\\templates\\content-widget-reviews.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_widget_product_review_item_start",
+            "file": "plugins\\woocommerce\\templates\\content-widget-reviews.php",
+            "type": "action",
+            "args": 1
+        },
+        {
+            "name": "woocommerce_widget_shopping_cart_after_buttons",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_widget_shopping_cart_before_buttons",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_widget_shopping_cart_buttons",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_widget_shopping_cart_total",
+            "file": "plugins\\woocommerce\\templates\\cart\\mini-cart.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "woocommerce_{$this->id}_shipping_add_rate",
+            "file": "plugins\\woocommerce\\includes\\shipping\\flat-rate\\class-wc-shipping-flat-rate.php",
+            "type": "action",
+            "args": 2
+        },
+        {
+            "name": "wp_{$blog_id}_wc_updater_cron",
+            "file": "plugins\\woocommerce\\includes\\rest-api\\Controllers\\Version2\\class-wc-rest-system-status-tools-v2-controller.php",
+            "type": "action",
+            "args": 0
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 5
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 5
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 4
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action",
+            "args": 3
+        },
+        {
+            "name": "{$old_hook}",
+            "file": "plugins\\woocommerce\\includes\\class-wc-deprecated-action-hooks.php",
+            "type": "action_reference",
+            "args": 1
+        }
+    ]
+}

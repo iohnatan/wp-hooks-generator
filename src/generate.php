@@ -11,13 +11,15 @@ require_once file_exists( 'vendor/autoload.php' ) ? 'vendor/autoload.php' : dirn
 $options = getopt( '', [
 	"input:",
 	"output:",
+	"project:",
+
 	"ignore-files::",
 	"ignore-hooks::",
 ] );
 
 if ( empty( $options['input' ] ) || empty( $options['output'] ) ) {
 	printf(
-		"Usage: %s --input=src --output=hooks [--ignore-files=ignore/this,ignore/that] [--ignore-hooks=this_hook,that_hook] \n",
+		"Usage: %s --input=src --output=hooks --project=project [--ignore-files=ignore/this,ignore/that] [--ignore-hooks=this_hook,that_hook] \n",
 		$argv[0]
 	);
 	exit( 1 );
@@ -59,6 +61,8 @@ $source_dir = $options['input'];
 $target_dir = $options['output'];
 $ignore_files = $options['ignore-files'];
 $ignore_hooks = $options['ignore-hooks'];
+
+$project_name = $options['project'];
 
 if ( ! file_exists( $source_dir ) ) {
 	printf(
@@ -173,6 +177,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
  * @return array<int,array<string,mixed>>
  */
 function export_hooks( array $hooks, string $path ) : array {
+	return export_hooks_2( $hooks, $path );
 	$out = array();
 
 	foreach ( $hooks as $hook ) {
@@ -236,6 +241,89 @@ function export_hooks( array $hooks, string $path ) : array {
 }
 
 /**
+ * @param \WP_Parser\Hook_Reflector[] $hooks Array of hook references.
+ * @param string                      $path  The file path.
+ * @return array<int,array<string,mixed>>
+ */
+function export_hooks_2( array $hooks, string $path ) : array {
+	$out = array();
+
+	foreach ( $hooks as $hook ) {
+		$result = [];
+
+		$name = $hook->getName();
+		$type = $hook->getType();;
+
+		if ( ( $type !== 'action' && // do_action()
+			$type !== 'action_reference' // do_action_ref_array()
+			) ||
+			// not contains '{$'.
+			strpos( $name, '{$' ) === false
+		) {
+			continue;
+		}
+
+		// classes\actions\ActionScheduler_Action.php
+		// do_action_ref_array( $hook, array_values( $this->get_args() ) );
+		// includes\class-wc-deprecated-action-hooks.php
+		// do_action( $old_hook, $order_id, $item_id, $item->legacy_package_key );
+		// '{$taxonomy}_add_form'
+		if ( starts_with( $name, '{$' ) &&
+			ends_with( $name, '}' )
+		) {
+			continue;
+		}
+
+		$doc      = \WP_Parser\export_docblock( $hook );
+
+		$result['name'] = $name;
+		$result['file'] = $path;
+		$result['type'] = $type;
+		$result['doc'] = $doc;
+		$result['args'] = count( $hook->getNode()->args ) - 1;
+
+		$out[] = $result;
+	}
+
+	return $out;
+}
+
+/** String starts with?
+ *
+ * @param string       $haystack .
+ * @param string|array $needles .
+ *
+ * @return bool
+ */
+function starts_with( string $haystack, $needles ) {
+	$needles = ! is_array( $needles ) ? [ $needles ] : $needles; // array of one element.
+	foreach ( $needles as $needle ) {
+		$length = strlen( $needle );
+		if ( substr( $haystack, 0, $length ) === $needle ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/** String ends with?
+ *
+ * @param string       $haystack .
+ * @param string|array $needles .
+ *
+ * @return bool
+ */
+function ends_with( string $haystack, $needles ) {
+	$needles = ! is_array( $needles ) ? [ $needles ] : $needles; // array of one element.
+	foreach ( $needles as $needle ) {
+		if ( substr_compare( $haystack, $needle, -strlen( $needle ) ) === 0 ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
  * @return array<int, string>
  */
 function parse_aliases( string $html ) : array {
@@ -267,23 +355,73 @@ $actions = array_values( array_filter( $output, function( array $hook ) : bool {
 	return in_array( $hook['type'], [ 'action', 'action_reference' ], true );
 } ) );
 
-$actions = [
-	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json',
-	'hooks' => $actions,
-];
+foreach ( $actions as $key => $action ) {
+	$actions[$key] = $action['name'];
+}
+// unique hooks (only for one dimensional array).
+$actions = array_unique( $actions );
 
-$result = file_put_contents( $target_dir . '/actions.json', json_encode( $actions, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) );
+// add regexp versions.
+$pattern       = '/{\$.*}/i'; // {$column_id}.
+$variable_part = '{$var}';
+$index         = 0; // to add an index key and see how many there are.
+foreach ( $actions as $action_name ) {
+	$normalized_name   = preg_replace( $pattern, $variable_part, $action_name );
+	$variable_part_pos = stripos( $normalized_name, $variable_part );
 
-// Filters
-$filters = array_values( array_filter( $output, function( array $hook ) : bool {
-	return in_array( $hook['type'], [ 'filter', 'filter_reference' ], true );
-} ) );
+	$actions_final["$index."] = [
+		'name'      => $action_name,
+		'norm_name' => $normalized_name,
+		'prefix'    => substr(
+			$normalized_name,
+			0,
+			$variable_part_pos
+		),
+		'suffix'    => substr(
+			$normalized_name,
+			$variable_part_pos + strlen( $variable_part )
+		)
+	];
+	$index++;
+}
 
-$filters = [
-	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json',
-	'hooks' => $filters,
-];
 
-$result = file_put_contents( $target_dir . '/filters.json', json_encode( $filters, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) );
+// $actions = [
+// 	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json',
+// 	'hooks' => $actions,
+// ];
+
+// $result = file_put_contents(
+// 	$target_dir . '/actions.json',
+// 	json_encode( $actions, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES )
+// );
+
+use Symfony\Component\VarExporter\VarExporter;
+
+$php_code = VarExporter::export( $actions_final );
+$php_code =
+'<?php' . "\n\n" .
+"\${$project_name}_dynamic_actions = $php_code;\n";
+
+$result = file_put_contents(
+	"$target_dir/{$project_name}_actions.php",
+	$php_code
+);
+
+
+// // Filters
+// $filters = array_values( array_filter( $output, function( array $hook ) : bool {
+// 	return in_array( $hook['type'], [ 'filter', 'filter_reference' ], true );
+// } ) );
+
+// $filters = [
+// 	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json',
+// 	'hooks' => $filters,
+// ];
+
+// $result = file_put_contents(
+// 	$target_dir . '/filters.json',
+// 	json_encode( $filters, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES )
+// );
 
 echo "Done\n";

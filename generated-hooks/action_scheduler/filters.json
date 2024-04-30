@@ -1,0 +1,998 @@
+{
+    "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json",
+    "hooks": [
+        {
+            "name": "action_scheduler_admin_notice_html",
+            "file": "classes\\ActionScheduler_ListTable.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "action_scheduler_admin_view_class",
+            "file": "classes\\ActionScheduler_AdminView.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_allow_async_request_runner",
+            "file": "classes\\ActionScheduler_AsyncRequest_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_async_request_sleep_seconds",
+            "file": "classes\\ActionScheduler_AsyncRequest_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "action_scheduler_check_pastdue_actions",
+            "file": "classes\\ActionScheduler_AdminView.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_cleanup_batch_size",
+            "file": "classes\\ActionScheduler_QueueCleaner.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the batch size when cleaning the queue.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The number of actions to clean in one batch.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$batch_size"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_default_cleaner_statuses",
+            "file": "classes\\ActionScheduler_QueueCleaner.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the statuses when cleaning the queue.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Action statuses to clean.",
+                        "types": [
+                            "string[]"
+                        ],
+                        "variable": "$default_statuses_to_purge"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_enable_recreate_data_store",
+            "file": "classes\\ActionScheduler_ListTable.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_extra_action_counts",
+            "file": "classes\\abstracts\\ActionScheduler_Store.php",
+            "type": "filter",
+            "doc": {
+                "description": "Allows 3rd party code to add extra action counts (used in filters in the list table).",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.5.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "array Array with format action_count_identifier =&gt; action count.",
+                        "types": [],
+                        "variable": "$extra_actions"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_failure_period",
+            "file": "classes\\ActionScheduler_QueueCleaner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_list_table_column_args",
+            "file": "classes\\ActionScheduler_ListTable.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "action_scheduler_list_table_column_args",
+            "file": "classes\\ActionScheduler_ListTable.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "action_scheduler_lock_class",
+            "file": "classes\\abstracts\\ActionScheduler_Lock.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_lock_duration",
+            "file": "classes\\abstracts\\ActionScheduler_Lock.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "action_scheduler_logger_class",
+            "file": "classes\\abstracts\\ActionScheduler_Logger.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_maximum_args_length",
+            "file": "classes\\data-stores\\ActionScheduler_wpPostStore.php",
+            "type": "filter",
+            "doc": {
+                "description": "Global wpdb object.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "var",
+                        "content": "",
+                        "types": [
+                            "\\wpdb"
+                        ],
+                        "variable": "$wpdb"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_maximum_execution_time",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_maximum_execution_time",
+            "file": "deprecated\\ActionScheduler_Abstract_QueueRunner_Deprecated.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_maximum_execution_time_likely_to_be_exceeded",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 5
+        },
+        {
+            "name": "action_scheduler_memory_exceeded",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "action_scheduler_pastdue_actions_check",
+            "file": "classes\\ActionScheduler_AdminView.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "action_scheduler_pastdue_actions_check_interval",
+            "file": "classes\\ActionScheduler_AdminView.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "action_scheduler_pastdue_actions_check_pre",
+            "file": "classes\\ActionScheduler_AdminView.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_pastdue_actions_min",
+            "file": "classes\\ActionScheduler_AdminView.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_pastdue_actions_seconds",
+            "file": "classes\\ActionScheduler_AdminView.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_post_status_args",
+            "file": "classes\\data-stores\\ActionScheduler_wpPostStore_PostStatusRegistrar.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_post_status_failed_labels",
+            "file": "classes\\data-stores\\ActionScheduler_wpPostStore_PostStatusRegistrar.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_post_status_running_labels",
+            "file": "classes\\data-stores\\ActionScheduler_wpPostStore_PostStatusRegistrar.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_post_type_args",
+            "file": "classes\\data-stores\\ActionScheduler_wpPostStore_PostTypeRegistrar.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_queue_runner_batch_size",
+            "file": "classes\\ActionScheduler_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_queue_runner_class",
+            "file": "classes\\ActionScheduler_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_queue_runner_concurrent_batches",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_queue_runner_flush_cache",
+            "file": "classes\\ActionScheduler_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_queue_runner_time_limit",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_recurring_action_failure_threshold",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "Controls the failure threshold for recurring actions.",
+                "long_description": "Before rescheduling a recurring action, we look at its status. If it failed, we then check if all of the most recent actions (upto the threshold set by this filter) sharing the same hook have also failed: if they have, that is considered consistent failure and a new instance of the action will not be scheduled.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Number of actions of the same hook to examine for failure. Defaults to 5.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$failure_threshold"
+                    }
+                ],
+                "long_description_html": "<p>Before rescheduling a recurring action, we look at its status. If it failed, we then check if all of the most recent actions (upto the threshold set by this filter) sharing the same hook have also failed: if they have, that is considered consistent failure and a new instance of the action will not be scheduled.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_recurring_action_is_consistently_failing",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "If a recurring action is assessed as consistently failing, it will not be rescheduled. This hook provides a way to observe and optionally override that assessment.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "If the action is considered to be consistently failing.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_consistently_failing"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The action being assessed.",
+                        "types": [
+                            "\\ActionScheduler_Action"
+                        ],
+                        "variable": "$action"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "action_scheduler_retention_period",
+            "file": "classes\\ActionScheduler_QueueCleaner.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the minimum scheduled date age for action deletion.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Minimum scheduled age in seconds of the actions to be deleted.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$retention_period"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_run_schedule",
+            "file": "classes\\ActionScheduler_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_store_class",
+            "file": "classes\\abstracts\\ActionScheduler_Store.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_stored_action_class",
+            "file": "classes\\ActionScheduler_ActionFactory.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 6
+        },
+        {
+            "name": "action_scheduler_stored_action_instance",
+            "file": "classes\\ActionScheduler_ActionFactory.php",
+            "type": "filter",
+            "doc": {
+                "description": "Allow 3rd party code to change the instantiated action for a given hook, args, schedule and group.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The instantiated action.",
+                        "types": [
+                            "\\ActionScheduler_Action"
+                        ],
+                        "variable": "$action"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The instantiated action's hook.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$hook"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The instantiated action's args.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The instantiated action's schedule.",
+                        "types": [
+                            "\\ActionScheduler_Schedule"
+                        ],
+                        "variable": "$schedule"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The instantiated action's group.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$group"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The action priority.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$priority"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 6
+        },
+        {
+            "name": "action_scheduler_taxonomy_args",
+            "file": "classes\\data-stores\\ActionScheduler_wpPostStore_TaxonomyRegistrar.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_timeout_period",
+            "file": "classes\\ActionScheduler_QueueCleaner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "action_scheduler_use_cpu_execution_time",
+            "file": "classes\\abstracts\\ActionScheduler_Abstract_QueueRunner.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "admin_memory_limit",
+            "file": "classes\\ActionScheduler_Compatibility.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "https_local_ssl_verify",
+            "file": "lib\\WP_Async_Request.php",
+            "type": "filter",
+            "doc": {
+                "description": "",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "pre_as_enqueue_async_action",
+            "file": "functions.php",
+            "type": "filter",
+            "doc": {
+                "description": "Provides an opportunity to short-circuit the default process for enqueuing async actions.",
+                "long_description": "Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the enqueued action ID (enqueued using some alternative process) or else zero.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The value to return instead of the option value.",
+                        "types": [
+                            "int",
+                            "null"
+                        ],
+                        "variable": "$pre_option"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action hook.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$hook"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action group.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$group"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action priority.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$priority"
+                    }
+                ],
+                "long_description_html": "<p>Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the enqueued action ID (enqueued using some alternative process) or else zero.</p>"
+            },
+            "args": 5
+        },
+        {
+            "name": "pre_as_schedule_cron_action",
+            "file": "functions.php",
+            "type": "filter",
+            "doc": {
+                "description": "Provides an opportunity to short-circuit the default process for enqueuing cron actions.",
+                "long_description": "Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the scheduled action ID (scheduled using some alternative process) or else zero.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The value to return instead of the option value.",
+                        "types": [
+                            "int",
+                            "null"
+                        ],
+                        "variable": "$pre_option"
+                    },
+                    {
+                        "name": "param",
+                        "content": "When the action will run.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$timestamp"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cron-like schedule string.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$schedule"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action hook.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$hook"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action group.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$group"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action priority.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$priority"
+                    }
+                ],
+                "long_description_html": "<p>Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the scheduled action ID (scheduled using some alternative process) or else zero.</p>"
+            },
+            "args": 7
+        },
+        {
+            "name": "pre_as_schedule_recurring_action",
+            "file": "functions.php",
+            "type": "filter",
+            "doc": {
+                "description": "Provides an opportunity to short-circuit the default process for enqueuing recurring actions.",
+                "long_description": "Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the scheduled action ID (scheduled using some alternative process) or else zero.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The value to return instead of the option value.",
+                        "types": [
+                            "int",
+                            "null"
+                        ],
+                        "variable": "$pre_option"
+                    },
+                    {
+                        "name": "param",
+                        "content": "When the action will run.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$timestamp"
+                    },
+                    {
+                        "name": "param",
+                        "content": "How long to wait between runs.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$interval_in_seconds"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action hook.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$hook"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action group.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$group"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action priority.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$priority"
+                    }
+                ],
+                "long_description_html": "<p>Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the scheduled action ID (scheduled using some alternative process) or else zero.</p>"
+            },
+            "args": 7
+        },
+        {
+            "name": "pre_as_schedule_single_action",
+            "file": "functions.php",
+            "type": "filter",
+            "doc": {
+                "description": "Provides an opportunity to short-circuit the default process for enqueuing single actions.",
+                "long_description": "Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the scheduled action ID (scheduled using some alternative process) or else zero.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The value to return instead of the option value.",
+                        "types": [
+                            "int",
+                            "null"
+                        ],
+                        "variable": "$pre_option"
+                    },
+                    {
+                        "name": "param",
+                        "content": "When the action will run.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$timestamp"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action hook.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$hook"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action group.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$group"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Action priority.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$priorities"
+                    }
+                ],
+                "long_description_html": "<p>Returning a value other than null from the filter will short-circuit the normal process. The expectation in such a scenario is that callbacks will return an integer representing the scheduled action ID (scheduled using some alternative process) or else zero.</p>"
+            },
+            "args": 6
+        },
+        {
+            "name": "{$this->identifier}_post_args",
+            "file": "lib\\WP_Async_Request.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the post arguments used during an async request.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "{$this->identifier}_query_args",
+            "file": "lib\\WP_Async_Request.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the post arguments used during an async request.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$url"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "{$this->identifier}_query_url",
+            "file": "lib\\WP_Async_Request.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the post arguments used during an async request.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$url"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        }
+    ]
+}
