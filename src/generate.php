@@ -2,7 +2,7 @@
 <?php
 declare(strict_types=1);
 
-namespace JohnBillion\WPHooksGenerator;
+namespace WPHooks\Generator;
 
 use DOMDocument;
 use phpDocumentor\Reflection\DocBlock;

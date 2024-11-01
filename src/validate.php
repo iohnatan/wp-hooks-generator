@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-namespace JohnBillion\WPHooksGenerator;
+namespace WPHooks\Generator;
 
 require_once file_exists( 'vendor/autoload.php' ) ? 'vendor/autoload.php' : dirname( __DIR__, 4 ) . '/vendor/autoload.php';
 
