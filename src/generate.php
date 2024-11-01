@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace WPHooks\Generator;
 
 use DOMDocument;
-use phpDocumentor\Reflection\DocBlock;
 use phpDocumentor\Reflection\DocBlockFactory;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
