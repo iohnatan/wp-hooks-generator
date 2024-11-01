@@ -303,6 +303,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 							$tag_data['description'] = $description;
 						}
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Param ) {
+						$tag_data['types'] = explode( '|', (string) $tag->getType() );
 						$tag_data['variable'] = '$' . $tag->getVariableName();
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
 						$tag_data['link'] = $tag->getLink();
