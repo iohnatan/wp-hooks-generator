@@ -178,6 +178,13 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 	$tag_types = [];
 
+	$funcs = [
+		'do_action',
+		'apply_filters',
+		'do_action_ref_array',
+		'apply_filters_ref_array',
+	];
+
 	foreach ( $files as $filename ) {
 		// Parse the PHP file
 		$contents = file_get_contents($filename);
@@ -217,7 +224,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 			$funcNameStr = $funcName->toString();
 
-			if ($funcNameStr !== 'do_action' && $funcNameStr !== 'apply_filters') {
+			if ( ! in_array( $funcNameStr, $funcs, true ) ) {
 				continue;
 			}
 
@@ -343,7 +350,22 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 			}
 
 			$out['file'] = $relativename;
-			$out['type'] = $funcNameStr === 'do_action' ? 'action' : 'filter';
+
+			switch ( $funcNameStr ) {
+				case 'do_action':
+					$out['type'] = 'action';
+					break;
+				case 'apply_filters':
+					$out['type'] = 'filter';
+					break;
+				case 'do_action_ref_array':
+					$out['type'] = 'action_reference';
+					break;
+				case 'apply_filters_ref_array':
+					$out['type'] = 'filter_reference';
+					break;
+			}
+
 			$out['doc'] = $doc;
 			$out['args'] = count( $expr->args ) - 1;
 
