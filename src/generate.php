@@ -256,6 +256,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 			];
 
 			$dbt = $docblock ? $docblock->getText() : '';
+			$aliases = null;
 
 			if ( !empty($dbt)) {
 				$dbf = DocBlockFactory::createInstance([
@@ -320,23 +321,32 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 				$long = fix_newlines( (string) $db->getDescription() );
 				$markdown = \Parsedown::instance();
+				$html = $markdown->text((string) $db->getDescription());
 
 				$doc = [
 					'description' => $db->getSummary(),
 					'long_description' => $long,
 					'tags' => $tags,
-					'long_description_html' => $markdown->text($long),
+					'long_description_html' => $html,
 				];
 
+				$aliases = parse_aliases( $html );
 			}
 
-			$output[] = [
-				'name' => $hook_name,
-				'file' => $relativename,
-				'type' => $funcNameStr === 'do_action' ? 'action' : 'filter',
-				'doc' => $doc,
-				'args' => count( $expr->args ) - 1,
-			];
+			$out = [];
+
+			$out['name'] = $hook_name;
+
+			if ( $aliases ) {
+				$out['aliases'] = $aliases;
+			}
+
+			$out['file'] = $relativename;
+			$out['type'] = $funcNameStr === 'do_action' ? 'action' : 'filter';
+			$out['doc'] = $doc;
+			$out['args'] = count( $expr->args ) - 1;
+
+			$output[] = $out;
 		}
 	}
 
