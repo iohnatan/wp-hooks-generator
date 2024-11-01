@@ -323,9 +323,10 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 				$long = fix_newlines( (string) $db->getDescription() );
 				$markdown = \Parsedown::instance();
 				$html = $markdown->text((string) $db->getDescription());
+				$html = str_replace( "\n", ' ', $html );
 
 				$doc = [
-					'description' => $db->getSummary(),
+					'description' => str_replace( "\n", ' ', $db->getSummary() ),
 					'long_description' => $long,
 					'tags' => $tags,
 					'long_description_html' => $html,
