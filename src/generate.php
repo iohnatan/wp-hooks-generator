@@ -5,6 +5,13 @@ declare(strict_types=1);
 namespace JohnBillion\WPHooksGenerator;
 
 use DOMDocument;
+use phpDocumentor\Reflection\DocBlock;
+use phpDocumentor\Reflection\DocBlockFactory;
+use PhpParser\Node;
+use PhpParser\NodeTraverser;
+use PhpParser\NodeVisitor\FindingVisitor;
+use PhpParser\ParserFactory;
+use PhpParser\PrettyPrinter\Standard;
 
 require_once file_exists( 'vendor/autoload.php' ) ? 'vendor/autoload.php' : dirname( __DIR__, 4 ) . '/vendor/autoload.php';
 
@@ -78,8 +85,30 @@ if ( ! file_exists( $target_dir ) ) {
 
 echo "Scanning for files...\n";
 
+/**
+ * @param string $directory
+ *
+ * @return array|\WP_Error
+ */
+function get_wp_files( $directory ) {
+	$iterableFiles = new \RecursiveIteratorIterator(
+		new \RecursiveDirectoryIterator( $directory )
+	);
+	$files = array();
+
+	foreach ( $iterableFiles as $file ) {
+		if ( 'php' !== $file->getExtension() ) {
+			continue;
+		}
+
+		$files[] = $file->getPathname();
+	}
+
+	return $files;
+}
+
 /** @var array<int,string> */
-$files = \WP_Parser\get_wp_files( $source_dir );
+$files = get_wp_files( $source_dir );
 $files = array_values( array_filter( $files, function( string $file ) use ( $ignore_files ) : bool {
 	foreach ( $ignore_files as $i ) {
 		if ( false !== strpos( $file, $i ) ) {
@@ -96,6 +125,47 @@ printf(
 );
 
 /**
+ * Fixes newline handling in parsed text.
+ *
+ * DocBlock lines, particularly for descriptions, generally adhere to a given character width. For sentences and
+ * paragraphs that exceed that width, what is intended as a manual soft wrap (via line break) is used to ensure
+ * on-screen/in-file legibility of that text. These line breaks are retained by phpDocumentor. However, consumers
+ * of this parsed data may believe the line breaks to be intentional and may display the text as such.
+ *
+ * This function fixes text by merging consecutive lines of text into a single line. A special exception is made
+ * for text appearing in `<code>` and `<pre>` tags, as newlines appearing in those tags are always intentional.
+ *
+ * @param string $text
+ *
+ * @return string
+ */
+function fix_newlines( $text ) {
+	// Non-naturally occurring string to use as temporary replacement.
+	$replacement_string = '{{{{{}}}}}';
+
+	// Replace newline characters within 'code' and 'pre' tags with replacement string.
+	$text = preg_replace_callback(
+		"/(?<=<pre><code>)(.+)(?=<\/code><\/pre>)/s",
+		function ( $matches ) use ( $replacement_string ) {
+			return preg_replace( '/[\n\r]/', $replacement_string, $matches[1] );
+		},
+		$text
+	);
+
+	// Merge consecutive non-blank lines together by replacing the newlines with a space.
+	$text = preg_replace(
+		"/[\n\r](?!\s*[\n\r])/m",
+		' ',
+		$text
+	);
+
+	// Restore newline characters into code blocks.
+	$text = str_replace( $replacement_string, "\n", $text );
+
+	return $text;
+}
+
+/**
  * @param array<int,string> $files
  * @param string            $root
  * @param array<int,string> $ignore_hooks
@@ -104,61 +174,171 @@ printf(
 function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : array {
 	$output = array();
 
+	// Create a new parser instance
+	$parser = ( new ParserFactory() )->createForNewestSupportedVersion();
+
+	$tag_types = [];
+
 	foreach ( $files as $filename ) {
-		if ( !is_readable( $filename ) ) {
-			continue;
-		}
-		$file = new \WP_Parser\File_Reflector( $filename );
-		$file_hooks = [];
-		$path = ltrim( substr( $filename, strlen( $root ) ), DIRECTORY_SEPARATOR );
-		$file->setFilename( $path );
+		// Parse the PHP file
+		$contents = file_get_contents($filename);
 
-		// should throw things, but for some reason returns errors instead, so we just collect them manually
-		ob_start();
-		$file->process();
-		$processing_errors = ob_get_clean();
-		if ( !empty( $processing_errors ) ) {
-			fwrite( STDERR, $filename . PHP_EOL );
-			fwrite( STDERR, $processing_errors . PHP_EOL );
+		if ($contents === false) {
+			throw new \Exception('Failed to read file ' . $filename);
 		}
 
-		if ( ! empty( $file->uses['hooks'] ) ) {
-			$file_hooks = array_merge( $file_hooks, export_hooks( $file->uses['hooks'], $path ) );
+		$stmts = $parser->parse($contents);
+
+		if (!is_array($stmts)) {
+			throw new \Exception('Failed to parse file ' . $filename);
 		}
 
-		foreach ( $file->getFunctions() as $function ) {
-			if ( ! empty( $function->uses ) && ! empty( $function->uses['hooks'] ) ) {
-				$file_hooks = array_merge( $file_hooks, export_hooks( $function->uses['hooks'], $path ) );
+		// Create a new FindingVisitor instance
+		$visitor = new FindingVisitor(
+			fn ( Node $node ) => ( $node instanceof Node\Stmt\Expression && $node->expr instanceof Node\Expr\FuncCall )
+		);
+
+		// Traverse the AST and resolve names
+		$traverser = new NodeTraverser();
+		$traverser->addVisitor( $visitor );
+		$traverser->traverse($stmts);
+
+		/** @var array<Node\Stmt\Expression> $stmts */
+		$found = $visitor->getFoundNodes();
+
+		// Process the parsed statements to find calls to do_action() and apply_filters()
+		foreach ($found as $stmt) {
+			/** @var Node\Expr\FuncCall $expr */
+			$expr = $stmt->expr;
+			$funcName = $expr->name;
+
+			if (! ($funcName instanceof Node\Name)) {
+				continue;
 			}
-		}
 
-		foreach ( $file->getClasses() as $class ) {
-			foreach ( $class->getMethods() as $method ) {
-				if ( ! empty( $method->uses ) && ! empty( $method->uses['hooks'] ) ) {
-					$file_hooks = array_merge( $file_hooks, export_hooks( $method->uses['hooks'], $path ) );
+			$funcNameStr = $funcName->toString();
+
+			if ($funcNameStr !== 'do_action' && $funcNameStr !== 'apply_filters') {
+				continue;
+			}
+
+			$hook = $expr->args[0];
+
+			if ( ! $hook instanceof Node\Arg ) {
+				continue;
+			}
+
+			$printer = new Standard();
+			$hook_name = $printer->prettyPrintExpr($hook->value);
+			$hook_name = preg_replace( '/^"(.*)"$/', '$1', $hook_name );
+			$hook_name = preg_replace( "/^'(.*)'$/", '$1', $hook_name );
+			$docblock = $stmt->getDocComment();
+
+			if ( $docblock && str_starts_with($docblock->getText(), '/** This action is documented in') ) {
+				continue;
+			}
+
+			if ( $docblock && str_starts_with($docblock->getText(), '/** This filter is documented in') ) {
+				continue;
+			}
+
+			if ( in_array( $hook_name, $ignore_hooks, true ) ) {
+				continue;
+			}
+
+			$relativename = str_replace( "{$root}/", '', $filename );
+
+			$doc = [
+				'description' => '',
+				'long_description' => '',
+				'tags' => [],
+				'long_description_html' => '',
+			];
+
+			$dbt = $docblock ? $docblock->getText() : '';
+
+			if ( !empty($dbt)) {
+				$dbf = DocBlockFactory::createInstance([
+					// 'since' => \phpDocumentor\Reflection\DocBlock\Tags\Since::class,
+				]);
+				$db = $dbf->create( $dbt );
+
+				$tags = [];
+
+				foreach ( $db->getTags() as $tag ) {
+					$content = '';
+
+					$tag_types[ get_class($tag) ] = true;
+
+					if ( ! method_exists( $tag, 'getVersion' ) && method_exists( $tag, 'getDescription' ) ) {
+						$content = (string) $tag->getDescription();
+						$content = preg_replace( '#\n\s+#', ' ', $content );
+					}
+
+					if ( empty( $content ) ) {
+						// continue;
+					}
+
+					$tag_data = [
+						'name' => $tag->getName(),
+						'content' => fix_newlines($content),
+					];
+
+					if ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'since' ) {
+						$tag_data['content'] = (string) $tag;
+						$tag_data['description'] = (string) $tag;
+					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Since ) {
+						// Version string.
+						$version = $tag->getVersion();
+
+						if ( ! empty( $version ) ) {
+							$tag_data['content'] = $version;
+						}
+
+						// Description string.
+						$description = preg_replace( '/[\n\r]+/', ' ', strval( $tag->getDescription() ) );
+
+						if ( ! empty( $description ) ) {
+							$tag_data['description'] = $description;
+						}
+					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Param ) {
+						$tag_data['variable'] = '$' . $tag->getVariableName();
+					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
+						$tag_data['link'] = $tag->getLink();
+					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Generic ) {
+						//
+					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
+						$tag_data['refers'] = $tag->getReference();
+					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
+						//
+					} else {
+						throw new \Exception( 'Unknown tag type: ' . get_class( $tag ) );
+					}
+
+					$tags[] = $tag_data;
 				}
-			}
-		}
 
-		$output = array_merge( $output, $file_hooks );
+				$long = fix_newlines( (string) $db->getDescription() );
+				$markdown = \Parsedown::instance();
+
+				$doc = [
+					'description' => $db->getSummary(),
+					'long_description' => $long,
+					'tags' => $tags,
+					'long_description_html' => $markdown->text($long),
+				];
+
+			}
+
+			$output[] = [
+				'name' => $hook_name,
+				'file' => $relativename,
+				'type' => $funcNameStr === 'do_action' ? 'action' : 'filter',
+				'doc' => $doc,
+				'args' => count( $expr->args ) - 1,
+			];
+		}
 	}
-
-	$output = array_filter( $output, function( array $hook ) use ( $ignore_hooks ) : bool {
-		if ( ! empty( $hook['doc'] ) && ! empty( $hook['doc']['description'] ) ) {
-			if ( 0 === strpos( $hook['doc']['description'], 'This filter is documented in ' ) ) {
-				return false;
-			}
-			if ( 0 === strpos( $hook['doc']['description'], 'This action is documented in ' ) ) {
-				return false;
-			}
-		}
-
-		if ( in_array( $hook['name'], $ignore_hooks, true ) ) {
-			return false;
-		}
-
-		return true;
-	} );
 
 	usort( $output, function( array $a, array $b ) : int {
 		return strcmp( $a['name'], $b['name'] );
