@@ -312,11 +312,17 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 						$tag_data['types'] = explode( '|', (string) $tag->getType() );
 						$tag_data['variable'] = '$' . $tag->getVariableName();
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
-						$tag_data['link'] = $tag->getLink();
+						$link = $tag->getLink();
+						$tag_data['content'] = sprintf(
+							'<a href="%s">%s</a>',
+							$link,
+							$link
+						);
+						$tag_data['link'] = $link;
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Generic ) {
 						//
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
-						$tag_data['refers'] = $tag->getReference();
+						$tag_data['refers'] = (string) $tag->getReference();
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
 						//
 					} else {
