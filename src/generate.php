@@ -326,10 +326,22 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					$tags[] = $tag_data;
 				}
 
-				$long = fix_newlines( (string) $db->getDescription() );
 				$markdown = \Parsedown::instance();
 				$html = $markdown->text((string) $db->getDescription());
 				$html = str_replace( "\n", ' ', $html );
+				$long = fix_newlines( (string) $db->getDescription() );
+				$long = str_replace(
+					'  - ',
+					"\n  - ",
+					$long
+				);
+				$long = preg_replace_callback(
+					'# ([1-9])\. #',
+					static function( array $matches ) : string {
+						return "\n {$matches[1]}. ";
+					},
+					$long
+				);
 
 				$doc = [
 					'description' => str_replace( "\n", ' ', $db->getSummary() ),
@@ -378,74 +390,6 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 	} );
 
 	return $output;
-}
-
-/**
- * @param \WP_Parser\Hook_Reflector[] $hooks Array of hook references.
- * @param string                      $path  The file path.
- * @return array<int,array<string,mixed>>
- */
-function export_hooks( array $hooks, string $path ) : array {
-	$out = array();
-
-	foreach ( $hooks as $hook ) {
-		$doc      = \WP_Parser\export_docblock( $hook );
-		$docblock = $hook->getDocBlock();
-
-		$doc['long_description_html'] = $doc['long_description'];
-
-		if ( $docblock ) {
-			$doc['long_description'] = \WP_Parser\fix_newlines( $docblock->getLongDescription() );
-			$doc['long_description'] = str_replace(
-				'  - ',
-				"\n  - ",
-				$doc['long_description']
-			);
-			$doc['long_description'] = preg_replace_callback(
-				'# ([1-9])\. #',
-				function( array $matches ) : string {
-					return "\n {$matches[1]}. ";
-				},
-				$doc['long_description']
-			);
-
-			foreach ( $docblock->getTags() as $i => $tag ) {
-				$content = '';
-
-				if ( ! method_exists( $tag, 'getVersion' ) ) {
-					$content = $tag->getDescription();
-					$content = \WP_Parser\format_description( preg_replace( '#\n\s+#', ' ', $content ) );
-				}
-
-				if ( empty( $content ) ) {
-					continue;
-				}
-
-				$doc['tags'][ $i ]['content'] = $content;
-			}
-		} else {
-			$doc['long_description'] = '';
-		}
-
-		$aliases = parse_aliases( $doc['long_description_html'] );
-
-		$result = [];
-
-		$result['name'] = $hook->getName();
-
-		if ( $aliases ) {
-			$result['aliases'] = $aliases;
-		}
-
-		$result['file'] = $path;
-		$result['type'] = $hook->getType();
-		$result['doc'] = $doc;
-		$result['args'] = count( $hook->getNode()->args ) - 1;
-
-		$out[] = $result;
-	}
-
-	return $out;
 }
 
 /**
