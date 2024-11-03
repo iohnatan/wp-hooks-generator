@@ -265,9 +265,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 			$aliases = null;
 
 			if ( !empty($dbt)) {
-				$dbf = DocBlockFactory::createInstance([
-					// 'since' => \phpDocumentor\Reflection\DocBlock\Tags\Since::class,
-				]);
+				$dbf = DocBlockFactory::createInstance();
 				$db = $dbf->create( $dbt );
 
 				$tags = [];
@@ -280,10 +278,6 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					if ( ! method_exists( $tag, 'getVersion' ) && method_exists( $tag, 'getDescription' ) ) {
 						$content = (string) $tag->getDescription();
 						$content = preg_replace( '#\n\s+#', ' ', $content );
-					}
-
-					if ( empty( $content ) ) {
-						// continue;
 					}
 
 					$tag_data = [
