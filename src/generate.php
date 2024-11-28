@@ -316,7 +316,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Generic ) {
 						//
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
-						$tag_data['refers'] = (string) $tag->getReference();
+						$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
 					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
 						//
 					} else {
