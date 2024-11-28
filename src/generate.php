@@ -230,10 +230,6 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 			$hook = $expr->args[0];
 
-			if ( ! $hook instanceof Node\Arg ) {
-				continue;
-			}
-
 			$printer = new Standard();
 			$hook_name = $printer->prettyPrintExpr($hook->value);
 			$hook_name = preg_replace( '/^"(.*)"$/', '$1', $hook_name );
