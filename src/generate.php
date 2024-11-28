@@ -176,8 +176,6 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 	// Create a new parser instance
 	$parser = ( new ParserFactory() )->createForNewestSupportedVersion();
 
-	$tag_types = [];
-
 	$funcs = [
 		'do_action',
 		'apply_filters',
@@ -228,13 +226,12 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 				continue;
 			}
 
-			$hook = $expr->args[0];
-
-			$printer = new Standard();
-			$hook_name = $printer->prettyPrintExpr($hook->value);
-			$hook_name = preg_replace( '/^"(.*)"$/', '$1', $hook_name );
-			$hook_name = preg_replace( "/^'(.*)'$/", '$1', $hook_name );
 			$docblock = $stmt->getDocComment();
+			$dbt = $docblock ? $docblock->getText() : '';
+
+			if ( empty( $dbt ) ) {
+				continue;
+			}
 
 			if ( $docblock && str_starts_with($docblock->getText(), '/** This action is documented in') ) {
 				continue;
@@ -244,11 +241,14 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 				continue;
 			}
 
+			$printer = new Standard();
+			$hook_name = $printer->prettyPrintExpr( $expr->args[0]->value );
+			$hook_name = preg_replace( '/^"(.*)"$/', '$1', $hook_name );
+			$hook_name = preg_replace( "/^'(.*)'$/", '$1', $hook_name );
+
 			if ( in_array( $hook_name, $ignore_hooks, true ) ) {
 				continue;
 			}
-
-			$relativename = str_replace( "{$root}/", '', $filename );
 
 			$doc = [
 				'description' => '',
@@ -257,13 +257,6 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 				'long_description_html' => '',
 			];
 
-			$dbt = $docblock ? $docblock->getText() : '';
-			$aliases = null;
-
-			if ( empty( $dbt ) ) {
-				continue;
-			}
-
 			$dbf = DocBlockFactory::createInstance();
 			$db = $dbf->create( $dbt );
 			$summary = trim( $db->getSummary() );
@@ -271,8 +264,6 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 			foreach ( $db->getTags() as $tag ) {
 				$content = '';
-
-				$tag_types[ get_class($tag) ] = true;
 
 				if ( ! method_exists( $tag, 'getVersion' ) && method_exists( $tag, 'getDescription' ) ) {
 					$content = (string) $tag->getDescription();
@@ -318,8 +309,6 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					//
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
 					$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
-					//
 				} else {
 					throw new \Exception( 'Unknown tag type: ' . get_class( $tag ) );
 				}
@@ -343,25 +332,23 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 				},
 				$long
 			);
-
 			$doc = [
 				'description' => str_replace( "\n", ' ', $summary ),
 				'long_description' => $long,
 				'tags' => $tags,
 				'long_description_html' => $html,
 			];
-
-			$aliases = parse_aliases( $html );
-
 			$out = [];
 
 			$out['name'] = $hook_name;
+
+			$aliases = parse_aliases( $html );
 
 			if ( $aliases ) {
 				$out['aliases'] = $aliases;
 			}
 
-			$out['file'] = $relativename;
+			$out['file'] = str_replace( "{$root}/", '', $filename );
 
 			switch ( $funcNameStr ) {
 				case 'do_action':
