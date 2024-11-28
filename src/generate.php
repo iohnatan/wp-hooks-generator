@@ -7,6 +7,7 @@ namespace WPHooks\Generator;
 use DOMDocument;
 use phpDocumentor\Reflection\DocBlockFactory;
 use PhpParser\Node;
+use PhpParser\Node\Expr\Variable;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\FindingVisitor;
 use PhpParser\ParserFactory;
@@ -199,7 +200,19 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 		// Create a new FindingVisitor instance
 		$visitor = new FindingVisitor(
-			fn ( Node $node ) => ( $node instanceof Node\Stmt\Expression && $node->expr instanceof Node\Expr\FuncCall )
+			fn ( Node $node ) => (
+				// Top-level function calls, eg to `do_action(...)`
+				(
+					$node instanceof Node\Stmt\Expression &&
+					$node->expr instanceof Node\Expr\FuncCall
+				) ||
+				// Function calls on the right-hand side of assignments, eg to `$value = apply_filters(...)`
+				(
+					$node instanceof Node\Stmt\Expression &&
+					$node->expr instanceof Node\Expr\Assign &&
+					$node->expr->expr instanceof Node\Expr\FuncCall
+				)
+			)
 		);
 
 		// Traverse the AST and resolve names
@@ -211,9 +224,18 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 		$found = $visitor->getFoundNodes();
 
 		// Process the parsed statements to find calls to do_action() and apply_filters()
-		foreach ($found as $stmt) {
-			/** @var Node\Expr\FuncCall $expr */
-			$expr = $stmt->expr;
+		foreach ( $found as $stmt ) {
+			if ( $stmt->expr instanceof Node\Expr\FuncCall ) {
+				// Top-level function calls like `do_action(...)`
+				$expr = $stmt->expr;
+			} elseif ( $stmt->expr instanceof Node\Expr\Assign && $stmt->expr->expr instanceof Node\Expr\FuncCall ) {
+				// Function calls in assignments like `$value = apply_filters(...)`
+				$expr = $stmt->expr->expr;
+			} else {
+				// Skip irrelevant nodes
+				continue;
+			}
+
 			$funcName = $expr->name;
 
 			if (! ($funcName instanceof Node\Name)) {
@@ -309,8 +331,23 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					//
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
 					$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'see' ) {
+					//
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Return_ ) {
+					printf(
+						'Hook "%s" contains a `@return` tag, which is not supported.' . "\n",
+						$hook_name,
+					);
 				} else {
-					throw new \Exception( 'Unknown tag type: ' . get_class( $tag ) );
+					throw new \Exception(
+						sprintf(
+							'Unknown tag type "%s" (@%s) for hook "%s" in file "%s".',
+							get_class( $tag ),
+							$tag->getName(),
+							$hook_name,
+							$filename,
+						)
+					);
 				}
 
 				$tags[] = $tag_data;
