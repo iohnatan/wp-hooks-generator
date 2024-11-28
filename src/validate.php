@@ -25,4 +25,5 @@ if ($result->isValid()) {
 	echo '$data is invalid', PHP_EOL;
 	echo "Error: ", $error->keyword(), PHP_EOL;
 	echo json_encode($error->keywordArgs(), JSON_PRETTY_PRINT), PHP_EOL;
+	exit(1);
 }
