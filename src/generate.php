@@ -260,96 +260,98 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 			$dbt = $docblock ? $docblock->getText() : '';
 			$aliases = null;
 
-			if ( !empty($dbt)) {
-				$dbf = DocBlockFactory::createInstance();
-				$db = $dbf->create( $dbt );
+			if ( empty( $dbt ) ) {
+				continue;
+			}
 
-				$tags = [];
+			$dbf = DocBlockFactory::createInstance();
+			$db = $dbf->create( $dbt );
+			$summary = trim( $db->getSummary() );
+			$tags = [];
 
-				foreach ( $db->getTags() as $tag ) {
-					$content = '';
+			foreach ( $db->getTags() as $tag ) {
+				$content = '';
 
-					$tag_types[ get_class($tag) ] = true;
+				$tag_types[ get_class($tag) ] = true;
 
-					if ( ! method_exists( $tag, 'getVersion' ) && method_exists( $tag, 'getDescription' ) ) {
-						$content = (string) $tag->getDescription();
-						$content = preg_replace( '#\n\s+#', ' ', $content );
-					}
-
-					$tag_data = [
-						'name' => $tag->getName(),
-						'content' => fix_newlines($content),
-					];
-
-					if ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'since' ) {
-						$tag_data['content'] = (string) $tag;
-						$tag_data['description'] = (string) $tag;
-					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Since ) {
-						// Version string.
-						$version = $tag->getVersion();
-
-						if ( ! empty( $version ) ) {
-							$tag_data['content'] = $version;
-						}
-
-						// Description string.
-						$description = preg_replace( '/[\n\r]+/', ' ', strval( $tag->getDescription() ) );
-
-						if ( ! empty( $description ) ) {
-							$tag_data['description'] = $description;
-						}
-					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
-						$tag_data['content'] = (string) $tag;
-					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Param ) {
-						$tag_data['types'] = explode( '|', (string) $tag->getType() );
-						$tag_data['variable'] = '$' . $tag->getVariableName();
-					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
-						$link = $tag->getLink();
-						$tag_data['content'] = sprintf(
-							'<a href="%s">%s</a>',
-							$link,
-							$link
-						);
-						$tag_data['link'] = $link;
-					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Generic ) {
-						//
-					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
-						$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
-					} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
-						//
-					} else {
-						throw new \Exception( 'Unknown tag type: ' . get_class( $tag ) );
-					}
-
-					$tags[] = $tag_data;
+				if ( ! method_exists( $tag, 'getVersion' ) && method_exists( $tag, 'getDescription' ) ) {
+					$content = (string) $tag->getDescription();
+					$content = preg_replace( '#\n\s+#', ' ', $content );
 				}
 
-				$markdown = \Parsedown::instance();
-				$html = $markdown->text((string) $db->getDescription());
-				$html = str_replace( "\n", ' ', $html );
-				$long = fix_newlines( (string) $db->getDescription() );
-				$long = str_replace(
-					'  - ',
-					"\n  - ",
-					$long
-				);
-				$long = preg_replace_callback(
-					'# ([1-9])\. #',
-					static function( array $matches ) : string {
-						return "\n {$matches[1]}. ";
-					},
-					$long
-				);
-
-				$doc = [
-					'description' => str_replace( "\n", ' ', $db->getSummary() ),
-					'long_description' => $long,
-					'tags' => $tags,
-					'long_description_html' => $html,
+				$tag_data = [
+					'name' => $tag->getName(),
+					'content' => fix_newlines($content),
 				];
 
-				$aliases = parse_aliases( $html );
+				if ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'since' ) {
+					$tag_data['content'] = (string) $tag;
+					$tag_data['description'] = (string) $tag;
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Since ) {
+					// Version string.
+					$version = $tag->getVersion();
+
+					if ( ! empty( $version ) ) {
+						$tag_data['content'] = $version;
+					}
+
+					// Description string.
+					$description = preg_replace( '/[\n\r]+/', ' ', strval( $tag->getDescription() ) );
+
+					if ( ! empty( $description ) ) {
+						$tag_data['description'] = $description;
+					}
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
+					$tag_data['content'] = (string) $tag;
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Param ) {
+					$tag_data['types'] = explode( '|', (string) $tag->getType() );
+					$tag_data['variable'] = '$' . $tag->getVariableName();
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
+					$link = $tag->getLink();
+					$tag_data['content'] = sprintf(
+						'<a href="%s">%s</a>',
+						$link,
+						$link
+					);
+					$tag_data['link'] = $link;
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Generic ) {
+					//
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
+					$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
+				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
+					//
+				} else {
+					throw new \Exception( 'Unknown tag type: ' . get_class( $tag ) );
+				}
+
+				$tags[] = $tag_data;
 			}
+
+			$markdown = \Parsedown::instance();
+			$html = $markdown->text((string) $db->getDescription());
+			$html = str_replace( "\n", ' ', $html );
+			$long = fix_newlines( (string) $db->getDescription() );
+			$long = str_replace(
+				'  - ',
+				"\n  - ",
+				$long
+			);
+			$long = preg_replace_callback(
+				'# ([1-9])\. #',
+				static function( array $matches ) : string {
+					return "\n {$matches[1]}. ";
+				},
+				$long
+			);
+
+			$doc = [
+				'description' => str_replace( "\n", ' ', $summary ),
+				'long_description' => $long,
+				'tags' => $tags,
+				'long_description_html' => $html,
+			];
+
+			$aliases = parse_aliases( $html );
 
 			$out = [];
 
