@@ -6,8 +6,8 @@ namespace WPHooks\Generator;
 
 use DOMDocument;
 use phpDocumentor\Reflection\DocBlockFactory;
+use PhpParser\Comment\Doc;
 use PhpParser\Node;
-use PhpParser\Node\Expr\Variable;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\FindingVisitor;
 use PhpParser\ParserFactory;
@@ -165,6 +165,29 @@ function fix_newlines( $text ) {
 	return $text;
 }
 
+class DocblockFinderVisitor extends FindingVisitor {
+	private ?Doc $latest_comment = null;
+
+	public function enterNode(Node $node) {
+		$comment = $node->getDocComment();
+
+		if ( $comment ) {
+			$this->latest_comment = $comment;
+		}
+
+		$filterCallback = $this->filterCallback;
+		if ($filterCallback($node)) {
+			if ( $this->latest_comment && $this->latest_comment->getEndLine() + 1 === $node->getStartLine() ) {
+				$node->setDocComment($this->latest_comment);
+			}
+
+			$this->foundNodes[] = $node;
+		}
+
+		return null;
+	}
+}
+
 /**
  * @param array<int,string> $files
  * @param string            $root
@@ -199,20 +222,8 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 		}
 
 		// Create a new FindingVisitor instance
-		$visitor = new FindingVisitor(
-			fn ( Node $node ) => (
-				// Top-level function calls, eg to `do_action(...)`
-				(
-					$node instanceof Node\Stmt\Expression &&
-					$node->expr instanceof Node\Expr\FuncCall
-				) ||
-				// Function calls on the right-hand side of assignments, eg to `$value = apply_filters(...)`
-				(
-					$node instanceof Node\Stmt\Expression &&
-					$node->expr instanceof Node\Expr\Assign &&
-					$node->expr->expr instanceof Node\Expr\FuncCall
-				)
-			)
+		$visitor = new DocblockFinderVisitor(
+			fn ( Node $node ) => ( $node instanceof Node\Expr\FuncCall )
 		);
 
 		// Traverse the AST and resolve names
@@ -220,22 +231,11 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 		$traverser->addVisitor( $visitor );
 		$traverser->traverse($stmts);
 
-		/** @var array<Node\Stmt\Expression> $stmts */
+		/** @var array<Node\Expr\FuncCall> $found */
 		$found = $visitor->getFoundNodes();
 
 		// Process the parsed statements to find calls to do_action() and apply_filters()
-		foreach ( $found as $stmt ) {
-			if ( $stmt->expr instanceof Node\Expr\FuncCall ) {
-				// Top-level function calls like `do_action(...)`
-				$expr = $stmt->expr;
-			} elseif ( $stmt->expr instanceof Node\Expr\Assign && $stmt->expr->expr instanceof Node\Expr\FuncCall ) {
-				// Function calls in assignments like `$value = apply_filters(...)`
-				$expr = $stmt->expr->expr;
-			} else {
-				// Skip irrelevant nodes
-				continue;
-			}
-
+		foreach ( $found as $expr ) {
 			$funcName = $expr->name;
 
 			if (! ($funcName instanceof Node\Name)) {
@@ -248,12 +248,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 				continue;
 			}
 
-			$docblock = $stmt->getDocComment();
-			$dbt = $docblock ? $docblock->getText() : '';
-
-			if ( empty( $dbt ) ) {
-				continue;
-			}
+			$docblock = $expr->getDocComment();
 
 			if ( $docblock && str_starts_with($docblock->getText(), '/** This action is documented in') ) {
 				continue;
@@ -270,6 +265,43 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 			if ( in_array( $hook_name, $ignore_hooks, true ) ) {
 				continue;
+			}
+
+			$known_problem_hooks = [
+				'autocomplete_users_for_site_admins',
+				'enable_edit_any_user_configuration',
+				'enqueue_block_assets',
+				'show_recent_comments_widget_style',
+			];
+
+			if ( ! ( $docblock instanceof Doc ) ) {
+				if ( in_array( $hook_name, $known_problem_hooks, true ) ) {
+					continue;
+				}
+
+				throw new \Exception(
+					sprintf(
+						'Hook "%s" in file "%s" is missing a docblock.',
+						$hook_name,
+						$filename,
+					)
+				);
+			}
+
+			$dbt = $docblock ? $docblock->getText() : '';
+
+			if ( empty( $dbt ) ) {
+				if ( in_array( $hook_name, $known_problem_hooks, true ) ) {
+					continue;
+				}
+
+				throw new \Exception(
+					sprintf(
+						'Hook "%s" in file "%s" has an empty docblock.',
+						$hook_name,
+						$filename,
+					)
+				);
 			}
 
 			$doc = [
