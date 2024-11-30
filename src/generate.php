@@ -344,13 +344,21 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					$description = preg_replace( '/[\n\r]+/', ' ', strval( $tag->getDescription() ) );
 
 					if ( ! empty( $description ) ) {
-						$tag_data['description'] = $description;
+						$markdown = \Parsedown::instance();
+						$html = $markdown->text( $description );
+						$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
+						$tag_data['description'] = $html;
 					}
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
 					$tag_data['content'] = (string) $tag;
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Param ) {
 					$tag_data['types'] = explode( '|', (string) $tag->getType() );
 					$tag_data['variable'] = '$' . $tag->getVariableName();
+
+					$markdown = \Parsedown::instance();
+					$html = $markdown->text( $tag_data['content'] );
+					$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
+					$tag_data['content'] = $html;
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
 					$link = $tag->getLink();
 					$tag_data['content'] = sprintf(
@@ -363,6 +371,10 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					//
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
 					$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
+					$markdown = \Parsedown::instance();
+					$html = $markdown->text( $tag_data['content'] );
+					$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
+					$tag_data['content'] = $html;
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'see' ) {
 					//
 				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Return_ ) {
