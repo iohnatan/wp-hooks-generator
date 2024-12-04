@@ -24,7 +24,7 @@
 		"ext-libxml": "*",
 		"erusev/parsedown": "^1.7",
 		"nikic/php-parser": "~4.0",
-		"phpdocumentor/reflection-docblock": "~5.0"
+		"phpdocumentor/reflection-docblock": "5.5.1"
 	},
 	"require-dev": {
 		"oomphinc/composer-installers-extender": "^2",
