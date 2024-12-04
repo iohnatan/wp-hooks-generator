@@ -22,8 +22,8 @@
 	"require": {
 		"php": ">=7",
 		"ext-libxml": "*",
-		"erusev/parsedown": "^1.7",
-		"nikic/php-parser": "~4.0",
+		"erusev/parsedown": "1.8.0-beta-7",
+		"nikic/php-parser": "4.19.4",
 		"phpdocumentor/reflection-docblock": "5.5.1"
 	},
 	"require-dev": {
