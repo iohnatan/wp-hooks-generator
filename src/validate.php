@@ -6,24 +6,23 @@ namespace WPHooks\Generator;
 require_once file_exists( 'vendor/autoload.php' ) ? 'vendor/autoload.php' : dirname( __DIR__, 4 ) . '/vendor/autoload.php';
 
 use Opis\JsonSchema\{
-	Validator, ValidationResult, ValidationError, Schema
+	Validator,
+	Errors\ErrorFormatter,
 };
 
 $data = json_decode(file_get_contents( $argv[1] ));
-$schema = Schema::fromJsonString(file_get_contents('schema.json'));
-
 $validator = new Validator();
+$id = 'https://github.com/wp-hooks/generator/blob/0.9.0/schema.json';
+$validator->resolver()->registerFile(
+	$id,
+	'schema.json',
+);
 
-/** @var ValidationResult $result */
-$result = $validator->schemaValidation($data, $schema);
+$result = $validator->validate( $data, $id );
 
 if ($result->isValid()) {
-	echo '$data is valid', PHP_EOL;
+	echo 'Data is valid', PHP_EOL;
 } else {
-	/** @var ValidationError $error */
-	$error = $result->getFirstError();
-	echo '$data is invalid', PHP_EOL;
-	echo "Error: ", $error->keyword(), PHP_EOL;
-	echo json_encode($error->keywordArgs(), JSON_PRETTY_PRINT), PHP_EOL;
+	print_r( ( new ErrorFormatter() )->format($result->error() ) );
 	exit(1);
 }
