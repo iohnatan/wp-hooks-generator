@@ -6,6 +6,10 @@ Note: If you just want the hook files without generating them yourself, use the 
 
 * [wp-hooks/wordpress-core](https://github.com/wp-hooks/wordpress-core) for WordPress core
 
+## Requirements
+
+PHP 8.3 or higher.
+
 ## Installation
 
 ```shell
