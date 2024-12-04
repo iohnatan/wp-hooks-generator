@@ -493,7 +493,7 @@ $actions = array_values( array_filter( $output, function( array $hook ) : bool {
 } ) );
 
 $actions = [
-	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json',
+	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/1.0.0/schema.json',
 	'hooks' => $actions,
 ];
 
@@ -505,7 +505,7 @@ $filters = array_values( array_filter( $output, function( array $hook ) : bool {
 } ) );
 
 $filters = [
-	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/0.9.0/schema.json',
+	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/1.0.0/schema.json',
 	'hooks' => $filters,
 ];
 
