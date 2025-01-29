@@ -275,17 +275,13 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 			];
 
 			if ( ! ( $docblock instanceof Doc ) ) {
-				if ( in_array( $hook_name, $known_problem_hooks, true ) ) {
-					continue;
-				}
-
-				throw new \Exception(
-					sprintf(
-						'Hook "%s" in file "%s" is missing a docblock.',
-						$hook_name,
-						$filename,
-					)
+				echo sprintf(
+					"Hook '%s' in file '%s' is missing a docblock.\n",
+					$hook_name,
+					$filename,
 				);
+
+				continue;
 			}
 
 			$dbt = $docblock ? $docblock->getText() : '';
@@ -295,13 +291,13 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					continue;
 				}
 
-				throw new \Exception(
-					sprintf(
-						'Hook "%s" in file "%s" has an empty docblock.',
-						$hook_name,
-						$filename,
-					)
+				echo sprintf(
+					"Hook '%s' in file '%s' has an empty docblock.\n",
+					$hook_name,
+					$filename,
 				);
+
+				continue;
 			}
 
 			$doc = [
