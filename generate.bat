@@ -2,15 +2,15 @@
 @ECHO OFF
 
 @REM @REM wordpress.
-@REM set INPUT_DIR=D:\CloudSync\0-Dev\Wordpress\Plugins\WordPress
+@REM set INPUT_DIR=D:\CloudSync\0-Dev\wp-projects\base-projects\WordPress
 @REM set PROJECT=wordpress
 
 @REM woocommerce.
-@REM set INPUT_DIR=D:\CloudSync\0-Dev\Wordpress\Plugins\woocommerce
+@REM set INPUT_DIR=D:\CloudSync\0-Dev\wp-projects\base-projects\woocommerce\plugins\woocommerce
 @REM set PROJECT=woocommerce
 
 @REM action_scheduler.
-set INPUT_DIR=D:\CloudSync\0-Dev\Wordpress\Plugins\action-scheduler
+set INPUT_DIR=D:\CloudSync\0-Dev\wp-projects\base-projects\action-scheduler
 set PROJECT=action_scheduler
 
 @REM must be PHP 7
