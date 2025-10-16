@@ -20,7 +20,6 @@
 		"bin/wp-hooks-generator"
 	],
 	"require": {
-		"johnbillion/wp-parser-lib": "^1.3.0",
 		"symfony/var-exporter": "*",
 
 		"php": ">=8.3",

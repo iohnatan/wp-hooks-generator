@@ -260,8 +260,11 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 
 			$printer = new Standard();
 			$hook_name = $printer->prettyPrintExpr( $expr->args[0]->value );
-			$hook_name = preg_replace( '/^"(.*)"$/', '$1', $hook_name );
-			$hook_name = preg_replace( "/^'(.*)'$/", '$1', $hook_name );
+			// this removes starting and ending quotes(') and doueble-quotes(")
+			// "'woocommerce_account_' . $key . '_endpoint'" =>
+			// "woocommerce_account_' . $key . '_endpoint"
+			// $hook_name = preg_replace( '/^"(.*)"$/', '$1', $hook_name );
+			// $hook_name = preg_replace( "/^'(.*)'$/", '$1', $hook_name );
 
 			if ( in_array( $hook_name, $ignore_hooks, true ) ) {
 				continue;
@@ -274,156 +277,158 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 				'show_recent_comments_widget_style',
 			];
 
-			if ( ! ( $docblock instanceof Doc ) ) {
-				echo sprintf(
-					"Hook '%s' in file '%s' is missing a docblock.\n",
-					$hook_name,
-					$filename,
-				);
+			// if ( ! ( $docblock instanceof Doc ) ) {
+			// 	echo sprintf(
+			// 		"Hook '%s' in file '%s' is missing a docblock.\n",
+			// 		$hook_name,
+			// 		$filename,
+			// 	);
 
-				continue;
-			}
-
-			$dbt = $docblock ? $docblock->getText() : '';
-
-			if ( empty( $dbt ) ) {
+			// 	continue;
+			// }
 				if ( in_array( $hook_name, $known_problem_hooks, true ) ) {
 					continue;
 				}
+			// $dbt = $docblock ? $docblock->getText() : '';
 
-				echo sprintf(
-					"Hook '%s' in file '%s' has an empty docblock.\n",
-					$hook_name,
-					$filename,
-				);
+			// if ( empty( $dbt ) ) {
+			// 	if ( in_array( $hook_name, $known_problem_hooks, true ) ) {
+			// 		continue;
+			// 	}
 
-				continue;
-			}
+			// 	echo sprintf(
+			// 		"Hook '%s' in file '%s' has an empty docblock.\n",
+			// 		$hook_name,
+			// 		$filename,
+			// 	);
 
-			$doc = [
-				'description' => '',
-				'long_description' => '',
-				'tags' => [],
-				'long_description_html' => '',
-			];
+			// 	continue;
+			// }
 
-			$dbf = DocBlockFactory::createInstance();
-			$db = $dbf->create( $dbt );
-			$summary = trim( $db->getSummary() );
-			$tags = [];
+			// $doc = [
+			// 	'description' => '',
+			// 	'long_description' => '',
+			// 	'tags' => [],
+			// 	'long_description_html' => '',
+			// ];
 
-			foreach ( $db->getTags() as $tag ) {
-				$content = '';
+			// $dbf = DocBlockFactory::createInstance();
+			// $db = $dbf->create( $dbt );
+			// $summary = trim( $db->getSummary() );
+			// $tags = [];
 
-				if ( ! method_exists( $tag, 'getVersion' ) && method_exists( $tag, 'getDescription' ) ) {
-					$content = (string) $tag->getDescription();
-					$content = preg_replace( '#\n\s+#', ' ', $content );
-				}
+			// foreach ( $db->getTags() as $tag ) {
+			// 	$content = '';
 
-				$tag_data = [
-					'name' => $tag->getName(),
-					'content' => fix_newlines($content),
-				];
+			// 	if ( ! method_exists( $tag, 'getVersion' ) && method_exists( $tag, 'getDescription' ) ) {
+			// 		$content = (string) $tag->getDescription();
+			// 		$content = preg_replace( '#\n\s+#', ' ', $content );
+			// 	}
 
-				if ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'since' ) {
-					$tag_data['content'] = (string) $tag;
-					$tag_data['description'] = (string) $tag;
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Since ) {
-					// Version string.
-					$version = $tag->getVersion();
+			// 	$tag_data = [
+			// 		'name' => $tag->getName(),
+			// 		'content' => fix_newlines($content),
+			// 	];
 
-					if ( ! empty( $version ) ) {
-						$tag_data['content'] = $version;
-					}
+			// 	if ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'since' ) {
+			// 		$tag_data['content'] = (string) $tag;
+			// 		$tag_data['description'] = (string) $tag;
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Since ) {
+			// 		// Version string.
+			// 		$version = $tag->getVersion();
 
-					// Description string.
-					$description = preg_replace( '/[\n\r]+/', ' ', strval( $tag->getDescription() ) );
+			// 		if ( ! empty( $version ) ) {
+			// 			$tag_data['content'] = $version;
+			// 		}
 
-					if ( ! empty( $description ) ) {
-						$markdown = \Parsedown::instance();
-						$html = $markdown->text( $description );
-						$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
-						$tag_data['description'] = $html;
-					}
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
-					$tag_data['content'] = (string) $tag;
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Param ) {
-					$tag_data['types'] = explode( '|', (string) $tag->getType() );
-					$tag_data['variable'] = '$' . $tag->getVariableName();
+			// 		// Description string.
+			// 		$description = preg_replace( '/[\n\r]+/', ' ', strval( $tag->getDescription() ) );
 
-					$markdown = \Parsedown::instance();
-					$html = $markdown->text( $tag_data['content'] );
-					$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
-					$tag_data['content'] = $html;
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
-					$link = $tag->getLink();
-					$tag_data['content'] = sprintf(
-						'<a href="%s">%s</a>',
-						$link,
-						$link
-					);
-					$tag_data['link'] = $link;
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Generic ) {
-					//
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
-					$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
-					$markdown = \Parsedown::instance();
-					$html = $markdown->text( $tag_data['content'] );
-					$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
-					$tag_data['content'] = $html;
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'see' ) {
-					//
-				} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Return_ ) {
-					printf(
-						'Hook "%s" contains a `@return` tag, which is not supported.' . "\n",
-						$hook_name,
-					);
-				} else {
-					throw new \Exception(
-						sprintf(
-							'Unknown tag type "%s" (@%s) for hook "%s" in file "%s".',
-							get_class( $tag ),
-							$tag->getName(),
-							$hook_name,
-							$filename,
-						)
-					);
-				}
+			// 		if ( ! empty( $description ) ) {
+			// 			$markdown = \Parsedown::instance();
+			// 			$html = $markdown->text( $description );
+			// 			$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
+			// 			$tag_data['description'] = $html;
+			// 		}
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Deprecated ) {
+			// 		$tag_data['content'] = (string) $tag;
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Param ) {
+			// 		$tag_data['types'] = explode( '|', (string) $tag->getType() );
+			// 		$tag_data['variable'] = '$' . $tag->getVariableName();
 
-				$tags[] = $tag_data;
-			}
+			// 		$markdown = \Parsedown::instance();
+			// 		$html = $markdown->text( $tag_data['content'] );
+			// 		$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
+			// 		$tag_data['content'] = $html;
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Link ) {
+			// 		$link = $tag->getLink();
+			// 		$tag_data['content'] = sprintf(
+			// 			'<a href="%s">%s</a>',
+			// 			$link,
+			// 			$link
+			// 		);
+			// 		$tag_data['link'] = $link;
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Generic ) {
+			// 		//
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See ) {
+			// 		$tag_data['refers'] = ltrim( (string) $tag->getReference(), '\\' );
+			// 		$markdown = \Parsedown::instance();
+			// 		$html = $markdown->text( $tag_data['content'] );
+			// 		$html = preg_replace( '/^<p>(.*)<\/p>$/', '$1', $html );
+			// 		$tag_data['content'] = $html;
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag && $tag->getName() === 'see' ) {
+			// 		//
+			// 	} elseif ( $tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\Return_ ) {
+			// 		printf(
+			// 			'Hook "%s" contains a `@return` tag, which is not supported.' . "\n",
+			// 			$hook_name,
+			// 		);
+			// 	} else {
+			// 		throw new \Exception(
+			// 			sprintf(
+			// 				'Unknown tag type "%s" (@%s) for hook "%s" in file "%s".',
+			// 				get_class( $tag ),
+			// 				$tag->getName(),
+			// 				$hook_name,
+			// 				$filename,
+			// 			)
+			// 		);
+			// 	}
 
-			$markdown = \Parsedown::instance();
-			$html = $markdown->text((string) $db->getDescription());
-			$html = str_replace( "\n", ' ', $html );
-			$long = fix_newlines( (string) $db->getDescription() );
-			$long = str_replace(
-				'  - ',
-				"\n  - ",
-				$long
-			);
-			$long = preg_replace_callback(
-				'# ([1-9])\. #',
-				static function( array $matches ) : string {
-					return "\n {$matches[1]}. ";
-				},
-				$long
-			);
-			$doc = [
-				'description' => str_replace( "\n", ' ', $summary ),
-				'long_description' => $long,
-				'tags' => $tags,
-				'long_description_html' => $html,
-			];
+			// 	$tags[] = $tag_data;
+			// }
+
+			// $markdown = \Parsedown::instance();
+			// $html = $markdown->text((string) $db->getDescription());
+			// $html = str_replace( "\n", ' ', $html );
+			// $long = fix_newlines( (string) $db->getDescription() );
+			// $long = str_replace(
+			// 	'  - ',
+			// 	"\n  - ",
+			// 	$long
+			// );
+			// $long = preg_replace_callback(
+			// 	'# ([1-9])\. #',
+			// 	static function( array $matches ) : string {
+			// 		return "\n {$matches[1]}. ";
+			// 	},
+			// 	$long
+			// );
+			// $doc = [
+			// 	'description' => str_replace( "\n", ' ', $summary ),
+			// 	'long_description' => $long,
+			// 	'tags' => $tags,
+			// 	'long_description_html' => $html,
+			// ];
 			$out = [];
 
 			$out['name'] = $hook_name;
 
-			$aliases = parse_aliases( $html );
+			// $aliases = parse_aliases( $html );
 
-			if ( $aliases ) {
-				$out['aliases'] = $aliases;
-			}
+			// if ( $aliases ) {
+			// 	$out['aliases'] = $aliases;
+			// }
 
 			$out['file'] = str_replace( "{$root}/", '', $filename );
 
@@ -442,7 +447,7 @@ function hooks_parse_files( array $files, string $root, array $ignore_hooks ) : 
 					break;
 			}
 
-			$out['doc'] = $doc;
+			// $out['doc'] = $doc;
 			$out['args'] = count( $expr->args ) - 1;
 
 			$output[] = $out;
@@ -487,6 +492,9 @@ $output = hooks_parse_files( $files, $source_dir, $ignore_hooks );
 $actions = array_values( array_filter( $output, function( array $hook ) : bool {
 	return in_array( $hook['type'], [ 'action', 'action_reference' ], true );
 } ) );
+
+// don't generate the JSON file or the filters.
+return;
 
 $actions = [
 	'$schema' => 'https://raw.githubusercontent.com/wp-hooks/generator/1.0.1/schema.json',

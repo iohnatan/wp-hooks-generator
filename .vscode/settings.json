@@ -1,3 +1,14 @@
 {
+    "workbench.colorCustomizations": {
+        "[Default Dark+]": {
+            "sideBar.background": "#191919",
+            "tab.inactiveBackground": "#191919",
+            "tab.activeBackground": "#111111",
+            "editor.background": "#111111"
+        },
+        "activityBar.background": "#0D332C",
+        "titleBar.activeBackground": "#12483E",
+        "titleBar.activeForeground": "#F5FCFB"
+    },
     "php.suggest.basic": false
 }
