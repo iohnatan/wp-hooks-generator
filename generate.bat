@@ -14,7 +14,7 @@ set PROJECT=wc
 @REM set PROJECT=as
 
 @REM must be PHP 8
-%PHP84% src\generate-iohna.php  ^
+%PHP84% src\generate-iohna.php ^
 	--input=%INPUT_DIR% ^
 	--output=generated-hooks\actions ^
 	--project=%PROJECT%
