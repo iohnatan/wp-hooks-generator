@@ -1,4 +1,5 @@
 {
+    "php.suggest.basic": false,
     "workbench.colorCustomizations": {
         "[Default Dark+]": {
             "sideBar.background": "#191919",
@@ -9,6 +10,5 @@
         "activityBar.background": "#0D332C",
         "titleBar.activeBackground": "#12483E",
         "titleBar.activeForeground": "#F5FCFB"
-    },
-    "php.suggest.basic": false
+    }
 }
